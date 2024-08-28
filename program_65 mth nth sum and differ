@@ -1,0 +1,46 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ArrayOperations {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // User input for array size
+        System.out.print("Enter the number of elements in the array: ");
+        int size = scanner.nextInt();
+
+        int[] arr = new int[size];
+
+        // User input for array elements
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        // User input for M and N
+        System.out.print("Enter the value of M (for Mth maximum): ");
+        int M = scanner.nextInt();
+
+        System.out.print("Enter the value of N (for Nth minimum): ");
+        int N = scanner.nextInt();
+
+        Arrays.sort(arr); // Sort the array in ascending order
+
+        if (M <= 0 || M > arr.length || N <= 0 || N > arr.length) {
+            System.out.println("Invalid M or N value. Please enter valid positions.");
+            return;
+        }
+
+        int mthMax = arr[arr.length - M]; // Mth maximum number
+        int nthMin = arr[N - 1];          
+
+        int sum = mthMax + nthMin;
+        int difference = mthMax - nthMin;
+
+        System.out.println(M + "st Maximum Number = " + mthMax);
+        System.out.println(N + "rd Minimum Number = " + nthMin);
+        System.out.println("Sum = " + sum);
+        System.out.println("Difference = " + difference);
+    }
+}
