@@ -1,0 +1,93 @@
+import java.util.Scanner;
+
+class MenuItem {
+    protected String name;
+    protected double price;
+
+    public MenuItem(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public void displayMenu() {
+        System.out.println("Name: " + name);
+        System.out.println("Price: $" + price);
+    }
+}
+
+class Appetizer extends MenuItem {
+    private String servingSize;
+
+    public Appetizer(String name, double price, String servingSize) {
+        super(name, price);
+        this.servingSize = servingSize;
+    }
+
+    public void orderAppetizer() {
+        System.out.println("Ordering appetizer: " + name);
+    }
+
+    public void serveAppetizer() {
+        System.out.println("Serving " + servingSize + " of " + name);
+    }
+
+    @Override
+    public void displayMenu() {
+        super.displayMenu();
+        System.out.println("Serving Size: " + servingSize);
+    }
+}
+
+class Entree extends MenuItem {
+    private String sideDish;
+
+    public Entree(String name, double price, String sideDish) {
+        super(name, price);
+        this.sideDish = sideDish;
+    }
+
+    public void orderEntree() {
+        System.out.println("Ordering entree: " + name);
+    }
+
+    public void serveEntree() {
+        System.out.println("Serving " + name + " with a side of " + sideDish);
+    }
+
+    @Override
+    public void displayMenu() {
+        super.displayMenu();
+        System.out.println("Side Dish: " + sideDish);
+    }
+}
+
+public class R192211863 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter appetizer name:");
+        String appetizerName = scanner.nextLine();
+        System.out.println("Enter appetizer price:");
+        double appetizerPrice = scanner.nextDouble();
+        scanner.nextLine();  
+        System.out.println("Enter serving size for appetizer:");
+        String servingSize = scanner.nextLine();
+        Appetizer appetizer = new Appetizer(appetizerName, appetizerPrice, servingSize);
+        System.out.println("Enter entree name:");
+        String entreeName = scanner.nextLine();
+        System.out.println("Enter entree price:");
+        double entreePrice = scanner.nextDouble();
+        scanner.nextLine();  
+        System.out.println("Enter side dish for entree:");
+        String sideDish = scanner.nextLine();
+        Entree entree = new Entree(entreeName, entreePrice, sideDish);
+        System.out.println("\nAppetizer Menu:");
+        appetizer.displayMenu();
+        appetizer.orderAppetizer();
+        appetizer.serveAppetizer();
+        System.out.println("\nEntree Menu:");
+        entree.displayMenu();
+        entree.orderEntree();
+        entree.serveEntree();
+        scanner.close();
+    }
+}
