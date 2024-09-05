@@ -1,0 +1,27 @@
+public class CompositeNumbers {
+
+    public static boolean isComposite(int num) {
+        if (num < 4) return false; // Numbers less than 4 are not composite
+
+        for (int i = 2; i <= num / 2; i++) {
+            if (num % i == 0) return true; // If divisible by any number other than 1 and itself
+        }
+
+        return false; // Not composite if no divisors found
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+
+        for (int i = A; i <= B; i++) {
+            if (isComposite(i)) {
+                System.out.print(i + " ");
+            }
+        }
+        
+        scanner.close();
+    }
+}
